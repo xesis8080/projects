@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+body{
+    background-color: #482673;
+}
+/* Header Styles */
+header {
+    background-color: #f6ebf4; /* Header background color */
+    color: #482673; /* Text color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif; /* Use the Poppins font */
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left h1 {
+    font-size: 24px;
+    margin-right: 20px;
+    font-weight: 600; /* Bold font weight */
+}
+
+.header-left h1:hover {
+    color: #4cbfa6;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    background-color: #482673;
+    color: #f6ebf4;
+    width: 150px;
+    height: 30px;
+    border: none;
+    border-radius: 15px;
+    padding: 5px;
+    margin-right: 20px;
+    font-size: 16px;
+}
+::placeholder{
+    color: #f6ebf4;
+    opacity: 4;
+}
+
+.nav-menu {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Add margin to separate the menu from the button */
+}
+
+.nav-menu li {
+    margin-right: 30px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #482673;
+    font-weight: 500; /* Medium font weight */
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #4cbfa6; /* Hover color */
+}
+
+#nav-btn {
+    background-color: #482673; /* Button background color */
+    color: #f6ebf4; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#nav-btn:hover{
+    background-color:#4cbfa6 ;
+    color: #f6ebf4;
+}
+
+
+/* Style for the form container */
+.uploadform form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for form elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+}
+
+input[type="text"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+/* CSS FOR MORE */
+.uploadform{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items:center;
+    margin-top: 20px;
+}
+.container{
+    width: 48%;
+    margin-bottom: 1em;
+}
+/* Style for the Remove Genre container */
+.remove-genre {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.remove-genre h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style for Add/Remove Book container */
+.add-remove-book {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-remove-book h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style for Upload Book container */
+.upload-book {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.upload-book h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style for form elements within the containers */
+.container .form-group {
+    margin-bottom: 20px;
+}
+
+.container label {
+    font-weight: bold;
+    display: block;
+}
+
+.container input[type="text"],
+.container input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.container button {
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.container button:hover {
+    background-color: #0056b3;
+}

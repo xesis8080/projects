@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='/css/indexstyle.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{{url_for('static',filename='/js/search.js')}}"></script>
+    <title>Bookify- One Stop Ebooks Collection</title>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>Bookify</h1>
+            <input type="text" id="search-bar" class="search-bar" placeholder="&#xF002;  Search Genre" style="font-family:Poppins, FontAwesome">
+            
+        </div>
+        <div class="header-right">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="/home">Genre</a></li>
+                    <form action="/logout" method="post">
+                        <button id="nav-btn" type="submit">Logout</button>
+                    </form>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Add this section to your HTML body -->
+    <section id="card-section">
+        <!-- Cards will be dynamically added here -->
+    </section>
+
+    
+    <script src="{{url_for('static',filename='/js/carousel.js')}}"></script>
+
+</body>
+</html>

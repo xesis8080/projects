@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include your CSS and JavaScript links here -->
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/genre_books.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Genre Books</title>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>Bookify</h1>
+        </div>
+        <div class="header-right">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="/home">Genre</a></li>
+                    <form action="/logout" method="post">
+                        <button id="nav-btn" type="submit">Logout</button>
+                    </form>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 id="mainhead">{{genre_heading}}</h1>
+        <table id="book-table">
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Author</th>
+                    <th>Book File</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Book information will be dynamically populated using JavaScript -->
+                <!-- Inside the tbody tag of genre_books.html -->
+                <!-- Inside the tbody tag of genre_books.html -->
+                {% for book in books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>
+                        <a href="{{ url_for('download_book', filename=book.file_path) }}">
+                            Download Book
+                        </a>
+                    </td>
+                    <!-- Include other fields as needed -->
+                </tr>
+                {% endfor %}                
+
+            </tbody>
+        </table>
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include your CSS and JavaScript links here -->
+    <link rel="stylesheet" href="{{url_for('static',filename='/css/add_a_genre.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{{url_for('static',filename='/js/admin-panel.js')}}"></script>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>Bookify ADMIN PANEL</h1>
+        </div>
+        <div class="header-right">
+            <nav>
+                <ul class="nav-menu">
+                    <form action="/logout" method="post">
+                        <button id="nav-btn" type="submit">Logout</button>
+                    </form>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="uploadform">
+        <form id="upload-form" enctype="multipart/form-data">
+            <h2>Upload a Genre</h2>
+            <p>
+                For better results use 1080p resolution images.
+            </p>
+            <div class="form-group">
+                <label for="heading">Genre Heading:</label>
+                <input type="text" id="heading" name="heading" required>
+            </div>
+            <div class="form-group">
+                <label for="image">Genre Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+            </div>
+            <button type="submit">Upload</button>
+        </form>
+        <div class="container remove-genre">
+            <h2>Remove a Genre</h2>
+            <p>
+                To remove a genre, please select the genre you wish to remove from your library and confirm the removal.
+            </p>
+            <form id="remove-genre-form">
+                <label for="genre">Select Genre:</label>
+                <select id="genre1" name="genre">
+                </select>
+                <button type="submit">Remove Genre</button>
+            </form>
+        </div>        
+        <div class="container add-remove-book">
+            <h2>Delete the Book Permanently</h2>
+            <p>
+                Delete the book permanently from Genre.
+            </p>
+            <form id="add-remove-book-form">
+                <label for="genre">Select Genre:</label>
+                <select id="genre2" name="genre" onchange="populateBooks(this.value)">
+                </select>
+                <label for="book">Select Book:</label>
+                <select id="book" name="book">
+                    <!-- Options will be populated dynamically using JavaScript -->
+                </select>
+                <button type="button" id="remove-book-button">Remove Book</button>
+            </form>
+        </div>        
+        <div class="container upload-book">
+            <h2>Upload a Book</h2>
+            <p>
+                You can upload a new book to your library by providing the book details and selecting the genre.
+            </p>
+            <form id="upload-book-form" method="POST" enctype="multipart/form-data">
+                <label for="book-title">Book Title:</label>
+                <input type="text" id="book-title" name="book-title" required>
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+                <label for="genre">Select Genre:</label>
+                <select id="genre3" name="genre">
+                </select>
+                <label for="book-file">Upload Book File (PDF or EPUB):</label>
+                <input type="file" id="book-file" name="book-file" accept=".pdf, .epub" required>
+                <button type="submit">Upload Book</button>
+            </form>
+        </div>        
+    </div>
+    <script>
+        // CODE for uploading genre #######
+        document.getElementById('upload-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        fetch('/upload_genre', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response data (heading and image path)
+            if (data.success) {
+                alert('Genre uploaded successfully!');
+                window.location.reload();
+                // You can redirect or update the UI as needed
+            }
+            if(!data.success)
+            {
+                alert(data.message);
+                window.location.reload();
+            }
+        })
+        .catch(error => {
+            console.error('Error uploading genre:', error);
+        });
+    });
+
+    //Code for removing the genre ########### 
+    document.getElementById('remove-genre-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        fetch('/remove_genre', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response data (if needed)
+            if(data.success)
+            {
+                window.location.reload();
+            }
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error removing genre:', error);
+        });
+    });
+
+    // Code for uploading the book ############
+    document.getElementById('upload-book-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        fetch('/upload_book', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Book uploaded successfully!');
+                window.location.reload();
+                // You can redirect or update the UI as needed
+            } else {
+                alert('Error: ' + data.message);
+                window.location.reload();
+            }
+        })
+        .catch(error => {
+            console.error('Error uploading book:', error);
+        });
+    });
+
+    </script>
+    
+</body>
+</html>
